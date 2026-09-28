@@ -46,7 +46,7 @@ namespace main_1
             while (comand != CommandExit)
             {
                 Console.Write("Your Command: "); 
-                comand = Console.ReadLine();
+                comand = Console.ReadLine() ?? "";
                 Console.WriteLine();
 
                 switch (comand)
@@ -105,7 +105,7 @@ namespace main_1
 
                             string convertComand = "";
                             Console.Write("Your Convert Command: $ ");
-                            convertComand = Console.ReadLine();
+                            convertComand = Console.ReadLine() ?? "";
 
                             switch (convertComand)
                             {

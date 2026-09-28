@@ -30,7 +30,18 @@ namespace main_1
 
                 // Запускаем выбранное задание
                 Type selectedType = taskTypes[selectedIndex];
-                ITask task = (ITask)Activator.CreateInstance(selectedType);
+                ITask? task = Activator.CreateInstance(selectedType) as ITask;
+
+                if (task is null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"\n[Ошибка] Не удалось создать экземпляр {selectedType.Name}.");
+                    Console.ResetColor();
+
+                    Console.WriteLine("\nНажмите Enter, чтобы вернуться к списку заданий.");
+                    Console.ReadLine();
+                    continue;
+                }
 
                 try
                 {
