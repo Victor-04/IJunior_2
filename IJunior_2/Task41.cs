@@ -10,11 +10,11 @@ namespace main_1
             int number = 0;
 
             Console.Clear();
-            number = inputerNumericValueСhecking();
+            number = inputerNumericValue();
             Console.Write($"Your number: {number}");
         }
 
-        public int inputerNumericValueСhecking()
+        public int inputerNumericValue()
         {
             int internalNumber = 0;
             bool retry = true;
