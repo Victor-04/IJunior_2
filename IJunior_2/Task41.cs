@@ -10,26 +10,26 @@ namespace main_1
             int number = 0;
 
             Console.Clear();
-            number = inputerNumericValue();
+            number = ReadIntegerFromConsole();
             Console.Write($"Your number: {number}");
         }
 
-        public int inputerNumericValue()
+        public int ReadIntegerFromConsole()
         {
-            int internalNumber = 0;
+            int integerValue = 0;
             bool retry = true;
 
             while (retry)
             {
                 Console.Write("Input number: ");
-                if (int.TryParse(Console.ReadLine(), out internalNumber))
+                if (int.TryParse(Console.ReadLine(), out integerValue))
                     retry = false;
 
                 if (retry)
                     Console.WriteLine("[Parsing error] Please try again\n");
             }
 
-            return internalNumber;
+            return integerValue;
         }
     }
 }
