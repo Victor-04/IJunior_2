@@ -10,22 +10,22 @@ namespace main_1
             int number = 0;
 
             Console.Clear();
-            number = ReadIntegerFromConsole();
+            number = ReadInteger();
             Console.Write($"Your number: {number}");
         }
 
-        public int ReadIntegerFromConsole()
+        public int ReadInteger()
         {
             int integerValue = 0;
-            bool retry = true;
+            bool isRetry = true;
 
-            while (retry)
+            while (isRetry)
             {
                 Console.Write("Input number: ");
                 if (int.TryParse(Console.ReadLine(), out integerValue))
-                    retry = false;
+                    isRetry = false;
 
-                if (retry)
+                if (isRetry)
                     Console.WriteLine("[Parsing error] Please try again\n");
             }
 
