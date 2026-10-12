@@ -25,25 +25,27 @@ namespace main_1
         public void OutputInteractiveBar(int currentValue, int maxValue)
         {
             int filledSlots = 0;
+            string outputLine = "";
 
             if (currentValue > 0)
             {
                 filledSlots = Math.Max(1, (int)(((float)currentValue / (float)maxValue) * BarWidth));
             }
-            Console.Write("[");
+            outputLine += "[";
 
             for (int i = 0; i < BarWidth; i++)
             {
                 if (i < filledSlots)
                 {
-                    Console.Write(FilledGlyph);
+                    outputLine += FilledGlyph;
                 }
-                else 
+                else
                 {
-                    Console.Write(EmptyGlyph);
+                    outputLine += EmptyGlyph;
                 }
             }
-            Console.Write("]\n");
+            outputLine += "]";
+            Console.WriteLine(outputLine);
         }
     }
 }
