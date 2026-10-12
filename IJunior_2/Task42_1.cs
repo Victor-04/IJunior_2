@@ -18,19 +18,19 @@ namespace main_1
 
         private string BuildInteractiveBar(int currentValue, int maxValue)
         {
-            const int barWidth = 10;
-            const char filledGlyph = '#';
-            const char emptyGlyph = ' ';
+            const int BarWidth = 10;
+            const char FilledGlyph = '#';
+            const char EmptyGlyph = ' ';
 
             int filledSlots = 0;
             string outputLine = "";
 
             if (maxValue > 0)
             {
-                filledSlots = currentValue * barWidth / maxValue;
+                filledSlots = currentValue * BarWidth / maxValue;
             }
 
-            outputLine =  "[" + new string(filledGlyph, filledSlots) + new string(emptyGlyph, barWidth - filledSlots) + "]";
+            outputLine =  "[" + new string(FilledGlyph, filledSlots) + new string(EmptyGlyph, BarWidth - filledSlots) + "]";
             
             return outputLine;
         }
