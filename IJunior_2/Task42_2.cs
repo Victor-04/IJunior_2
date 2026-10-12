@@ -18,14 +18,15 @@ namespace main_1
 
         private string BuildInteractiveBar(int percentFilling, int lengthBar)
         {
-            percentFilling = (percentFilling > 100) ? 100 : percentFilling;
+            const char FilledGlyph = '#';
+            const char EmptyGlyph = '_';
+            int percentMax = 100;
+
+            percentFilling = (percentFilling > percentMax) ? percentMax : percentFilling;
             percentFilling = (percentFilling < 0) ? 0 : percentFilling;
             lengthBar = (lengthBar < 0) ? 0 : lengthBar;
 
-            const char FilledGlyph = '#';
-            const char EmptyGlyph = '_';
-
-            int filledSlots = lengthBar * percentFilling / 100;
+            int filledSlots = lengthBar * percentFilling / percentMax;
             
             return "[" + new string(FilledGlyph, filledSlots) + new string(EmptyGlyph, lengthBar - filledSlots) + "]";
         }
