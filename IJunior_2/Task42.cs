@@ -11,18 +11,16 @@ namespace main_1
 
         public void Run()
         {
-            var healthParams = (current: 80, max: 100 );
-            var manaParams = (current: 55, max: 135 );
+            var healthParam = (current: 80, max: 100 );
+            var manaParam = (current: 55, max: 135 );
 
             Console.Clear();
             Console.WriteLine("Your hero params:");
-            Console.Write("Health: ");
-            OutputInteractiveBar(healthParams.current, healthParams.max);
-            Console.Write("Mana:  ");
-            OutputInteractiveBar(manaParams.current, manaParams.max);
+            Console.WriteLine($"Health: {BuildInteractiveBar(healthParam.current, healthParam.max)}");
+            Console.WriteLine($"Mana:  {BuildInteractiveBar(manaParam.current, manaParam.max)}");
         }
 
-        public void OutputInteractiveBar(int currentValue, int maxValue)
+        public string BuildInteractiveBar(int currentValue, int maxValue)
         {
             int filledSlots = 0;
             string outputLine = "";
@@ -45,7 +43,8 @@ namespace main_1
                 }
             }
             outputLine += "]";
-            Console.WriteLine(outputLine);
+            
+            return outputLine;
         }
     }
 }
