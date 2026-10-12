@@ -11,8 +11,8 @@ namespace main_1
 
         public void Run()
         {
-            var healthParams = (current: 87, max: 253 );
-            var manaParams = (current: 79, max: 135 );
+            var healthParams = (current: 80, max: 100 );
+            var manaParams = (current: 55, max: 135 );
 
             Console.Clear();
             Console.WriteLine("Your hero params:");
@@ -32,9 +32,9 @@ namespace main_1
             }
             Console.Write("[");
 
-            for (int i = 1; i <= BarWidth; i++)
+            for (int i = 0; i < BarWidth; i++)
             {
-                if (i <= filledSlots)
+                if (i < filledSlots)
                 {
                     Console.Write(FilledGlyph);
                 }
@@ -44,8 +44,6 @@ namespace main_1
                 }
             }
             Console.Write("]\n");
-
-            return;
         }
     }
 }
