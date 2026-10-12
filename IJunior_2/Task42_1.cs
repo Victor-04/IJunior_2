@@ -21,15 +21,17 @@ namespace main_1
             const int barWidth = 10;
             const char filledGlyph = '#';
             const char emptyGlyph = ' ';
+
             int filledSlots = 0;
+            string outputLine = "";
 
             if (maxValue > 0)
             {
                 filledSlots = currentValue * barWidth / maxValue;
             }
 
-            string outputLine =  "[" + new string(filledGlyph, filledSlots) + new string(emptyGlyph, barWidth - filledSlots) + "]";
-
+            outputLine =  "[" + new string(filledGlyph, filledSlots) + new string(emptyGlyph, barWidth - filledSlots) + "]";
+            
             return outputLine;
         }
     }
