@@ -20,7 +20,7 @@ namespace main_1
             Console.WriteLine($"Mana:  {BuildInteractiveBar(manaParam.current, manaParam.max)}");
         }
 
-        public string BuildInteractiveBar(int currentValue, int maxValue)
+        private string BuildInteractiveBar(int currentValue, int maxValue)
         {
             int filledSlots = 0;
             string outputLine = "";
