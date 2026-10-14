@@ -1,15 +1,18 @@
-﻿namespace main_1
+﻿using System.ComponentModel.Design;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace main_1
 {
     public class Task44_1 : ITask
     {
+        private const string CommandAdd = "1";
+        private const string CommandPrint = "2";
+        private const string CommandRemove = "3";
+        private const string CommandFind = "4";
+        private const string CommandExit = "5";
+
         public void Run()
         {
-            const string CommandAdd = "1";
-            const string CommandPrint = "2";
-            const string CommandRemove = "3";
-            const string CommandFind = "4";
-            const string CommandExit = "5";
-
             string[] names =
             {
                 "Иванов Иван Иванович",
@@ -62,37 +65,44 @@
         private void PrintMenu()
         {
             Console.WriteLine("-== Dossier Manager ==-");
-            Console.WriteLine("  1. Add dossier");
-            Console.WriteLine("  2. Print all dossiers");
-            Console.WriteLine("  3. Remove dossier");
-            Console.WriteLine("  4. Find by last name");
-            Console.WriteLine("  5. Exit");
+            Console.WriteLine($"  {CommandAdd}: Add dossier");
+            Console.WriteLine($"  {CommandPrint}: Print all dossiers");
+            Console.WriteLine($"  {CommandRemove}: Remove dossier");
+            Console.WriteLine($"  {CommandFind}: Find by last name");
+            Console.WriteLine($"  {CommandExit}: Exit");
             Console.WriteLine();
         }
 
         private string[] AddToEnd(string[] array, string value)
         {
-            string[] result = new string[array.Length + 1];
+            int arrayLength = array.Length;
+            string[] result = new string[arrayLength + 1];
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < arrayLength; i++)
             {
                 result[i] = array[i];
             }
 
-            result[array.Length] = value;
+            result[arrayLength] = value;
             return result;
         }
 
         private string[] RemoveAt(string[] array, int index)
         {
-            string[] result = new string[array.Length - 1];
+            int arrayLength = array.Length;
+            string[] result = new string[arrayLength - 1];
+            int mainIndex = 0;
 
-            for (int i = 0, j = 0; i < array.Length; i++)
+            for (int i = 0; i < index; i++)
             {
-                if (i == index) continue;
+                result[mainIndex] = array[i];
+                mainIndex++;
+            }
 
-                result[j] = array[i];
-                j++;
+            for (int i = index + 1; i < arrayLength; i++)
+            {
+                result[mainIndex] = array[i];
+                mainIndex++;
             }
 
             return result;
@@ -101,7 +111,6 @@
         private void AddDossier(ref string[] names, ref string[] positions)
         {
             Console.Clear();
-
             Console.Write("Enter full name (Фамилия Имя Отчество): ");
             string fullName = Console.ReadLine() ?? "";
 
@@ -141,8 +150,9 @@
         private void RemoveDossier(ref string[] names, ref string[] positions)
         {
             Console.Clear();
+            int arrayLength = names.Length;
 
-            if (names.Length == 0)
+            if (arrayLength == 0)
             {
                 Console.WriteLine("No dossiers to remove.");
                 return;
@@ -152,15 +162,15 @@
 
             Console.Write("Enter dossier number to remove: ");
 
-            if (!int.TryParse(Console.ReadLine(), out int number))
+            if (int.TryParse(Console.ReadLine(), out int number) == false)
             {
                 Console.WriteLine("Invalid number.");
                 return;
             }
 
-            if (number < 1 || number > names.Length)
+            if (number < 1 || number > arrayLength)
             {
-                Console.WriteLine($"Number must be between 1 and {names.Length}.");
+                Console.WriteLine($"Number must be between 1 and {arrayLength}.");
                 return;
             }
 
